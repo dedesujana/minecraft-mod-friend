@@ -1,7 +1,5 @@
 plugins {
     id 'java'
-    id 'net.neoforged.gradle.userdev' version '7.0.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = '1.0.0'
@@ -11,29 +9,22 @@ base {
     archivesName = 'friendmod'
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 repositories {
     mavenCentral()
-    maven {
-        name = 'NeoForged'
-        url = 'https://maven.neoforged.net/releases'
-    }
-    maven {
-        name = 'Sponge'
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
-    }
 }
 
 dependencies {
+    // Neoforge API
     implementation 'net.neoforged:neoforge:21.0.137-beta'
 }
 
-mixin {
-    add sourceSets.main, 'friendmod.refmap.json'
-}
-
-tasks.withType(JavaCompile).configureEach {
+tasks.named('compileJava') {
     options.encoding = 'UTF-8'
 }
 
