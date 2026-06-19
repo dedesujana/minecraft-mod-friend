@@ -37,6 +37,6 @@ if [ -z "$GRADLE_HOME" ] ; then
 fi
 export GRADLE_HOME
 
-CLASSPATH=$GRADLE_HOME/gradle-wrapper.jar
+CLASSPATH=$GRADLE_HOME/gradle/wrapper/gradle-wrapper.jar
 
-java "$@" -cp "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+java -cp "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
