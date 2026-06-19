@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="friendmod"
+version="1.0.0"
+displayName="Friend Mod"
+description="A mod that allows you to add friends, check their online status, and join them!"
+logoFile="logo.png"
+
+[[dependencies.friendmod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.21.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.friendmod]]
+    modId="neoforge"
+    mandatory=true
+    versionRange="[21.0.137-beta,)"
+    ordering="NONE"
+    side="BOTH"
