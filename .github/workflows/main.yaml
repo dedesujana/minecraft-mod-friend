@@ -1,0 +1,31 @@
+name: Build Mod (with wrapper setup)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make setup script executable
+        run: chmod +x setup-gradle-wrapper.sh
+
+      - name: Run wrapper setup
+        run: ./setup-gradle-wrapper.sh
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build with Gradle wrapper
+        run: ./gradlew build --no-daemon
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: friendmod-jar
+          path: build/libs/friendmod-*.jar
